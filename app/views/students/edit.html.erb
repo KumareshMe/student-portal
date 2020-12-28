@@ -1,0 +1,45 @@
+<h1>Edit your details</h1>
+
+<% if @student.errors.any? %>
+	<h2>The following errors prevented from being saved</h2>
+	<ul>
+		<% @student.errors.full_messages.each do |msg| %>
+			<li><%= msg %></li>
+		<% end %>
+	</ul>
+<% end %>
+
+<%= form_with(model: @student, local: true) do |j| %>
+
+  <p>
+    <%= j.label :student_name %></br></br>
+    <%= j.text_field :student_name %>
+	</p>
+	
+	<p>
+		<%= j.label :email_id %></br></br>
+		<%= j.text_field :email_id %>
+	</p>
+
+	<p>
+		<%= j.label :address %></br></br>
+		<%= j.text_area :address %>
+	</p>
+
+	<p>
+	  <%= j.label :contact_number %></br></br>
+	  <%= j.text_field :contact_number %>
+	</p>
+	
+	<p>
+		<%= j.label :marks %></br></br>
+		<%= j.text_field :marks %>
+	</p>
+
+	<p>
+		<%= j.submit :UpdateDetails %>
+	</p>
+
+	<td><%= link_to "Cancel and Back to the profile", student_path(@student) %></td>
+
+<% end %>
